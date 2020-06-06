@@ -1,4 +1,5 @@
 import employeeModel from '../models/employee-model.js';
+import mongoose from 'mongoose';
 
 /**
  * Function taking care of getting all the employees from database.
@@ -39,6 +40,7 @@ const getEmployee = async (req, res) => {
 const addEmployee = async (req, res) => {
   try {
     const employee = req.body;
+    employee._id = new mongoose.Types.ObjectId();
     const addQuery = await employeeModel.create(employee);
 
     res.send(addQuery);

@@ -1,4 +1,5 @@
 import bookModel from '../models/book-model.js';
+import mongoose from 'mongoose';
 
 /**
  * Function taking care of getting all books from database.
@@ -39,6 +40,7 @@ const getBook = async (req, res) => {
 const addBook = async (req, res) => {
   try {
     const book = req.body;
+    book._id = new mongoose.Types.ObjectId();
     const addQuery = await bookModel.create(book);
 
     res.send(addQuery);
