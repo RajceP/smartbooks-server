@@ -12,7 +12,7 @@ const getEmployees = async (_req, res) => {
 
     res.send(employees);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -28,7 +28,7 @@ const getEmployee = async (req, res) => {
 
     res.send(employee);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -45,7 +45,7 @@ const addEmployee = async (req, res) => {
 
     res.send(addQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -62,7 +62,7 @@ const updateEmployee = async (req, res) => {
 
     res.send(updateQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -78,7 +78,7 @@ const deleteEmployee = async (req, res) => {
 
     res.send(deleteQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 

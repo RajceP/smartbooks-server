@@ -6,21 +6,15 @@ import dotenv from 'dotenv';
 
 import router from './routes/routes.js';
 
-/**
- * Set environment variables from .env file.
- */
+// Set environment variables from .env file.
 const { config } = dotenv;
 config();
 
-/**
- * Initialize express
- */
+// Initialize express
 const app = express();
 const { urlencoded, json } = express;
 
-/**
- * Initialize connection to MongoDB.
- */
+// Initialize connection to MongoDB.
 mongoose.connect(process.env.DB || 'mongodb://localhost:27017/smartbooks', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -32,9 +26,7 @@ db.once('open', () => {
   console.log('We are open!');
 });
 
-/**
- * Use middlewares.
- */
+// Use middlewares.
 app.use(cors({ credentials: true, origin: true }));
 app.options('*', cors());
 app.use(morgan('dev'));
@@ -43,19 +35,14 @@ app.use(json());
 
 app.use('/', router);
 
-/**
- * Catch 404 and forward to error handler
- */
+// Catch 404 and forward to error handler
 app.use((_req, _res, next) => {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-/**
- * Development error handler.
- * Will print stacktrace
- */
+// Development error handler. Will print stacktrace.
 if (process.env.NODE_ENV === 'development') {
   app.use((err, _req, res) => {
     res.status(err.status || 500);
@@ -66,10 +53,7 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-/**
- * Production error handler.
- * No stacktraces leaked to user.
- */
+// Production error handler. No stacktraces leaked to user.
 app.use((err, _req, res) => {
   res.status(err.status || 500);
   res.render('error', {
@@ -78,9 +62,7 @@ app.use((err, _req, res) => {
   });
 });
 
-/**
- * Initialize server listening.
- */
+// Initialize server listening.
 app.listen(process.env.PORT || 3002, () => {
   console.log('server listening on port 3002');
 });

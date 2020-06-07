@@ -12,7 +12,7 @@ const getBooks = async (_req, res) => {
 
     res.send(books);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -28,7 +28,7 @@ const getBook = async (req, res) => {
 
     res.send(book);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -45,7 +45,7 @@ const addBook = async (req, res) => {
 
     res.send(addQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -62,7 +62,7 @@ const updateBook = async (req, res) => {
 
     res.send(updateQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 
@@ -78,7 +78,7 @@ const deleteBook = async (req, res) => {
 
     res.send(deleteQuery);
   } catch (e) {
-    res.send(e.message);
+    res.status(500).send(e.message);
   }
 };
 

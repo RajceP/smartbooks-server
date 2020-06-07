@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-/**
- * Employee model schema.
- */
+// Employee model schema.
 const employeeSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
@@ -11,4 +9,4 @@ const employeeSchema = new mongoose.Schema({
   phone: String,
 });
 
-export default mongoose.model('Employee', employeeSchema);
+export default mongoose.model('employee', employeeSchema);

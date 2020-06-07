@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-/**
- * Book model schema.
- */
+// Book model schema.
 const bookSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   isbn: String,
@@ -16,4 +14,4 @@ const bookSchema = new mongoose.Schema({
   website: String,
 });
 
-export default mongoose.model('Book', bookSchema);
+export default mongoose.model('book', bookSchema);
