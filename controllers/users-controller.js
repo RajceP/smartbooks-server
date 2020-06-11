@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
 
     const existingUser = await userModel.findOne({ email: email });
     if (existingUser) {
-      return res.status(409).send({ message: 'An account with this email already exists.' });
+      return res.status(409).send({ message: 'There is already account associated with this email.' });
     }
 
     const salt = await bcrypt.genSalt();
@@ -45,12 +45,12 @@ const loginUser = async (req, res) => {
 
     const user = await userModel.findOne({ email: email });
     if (!user) {
-      return res.status(404).send({ message: 'No account with this email has been registered.' });
+      return res.status(404).send({ message: 'Invalid email.' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).send({ message: 'Invalid credentials.' });
+        return res.status(401).send({ message: 'Invalid password.' });
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
