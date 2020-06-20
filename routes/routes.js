@@ -9,12 +9,12 @@ import {
   updateBook,
 } from '../controllers/books-controller.js';
 import {
-  getEmployees,
-  getEmployee,
-  addEmployee,
-  updateEmployee,
-  deleteEmployee,
-} from '../controllers/employees-controller.js';
+  getCustomers,
+  getCustomer,
+  addCustomer,
+  updateCustomer,
+  deleteCustomer,
+} from '../controllers/customers-controller.js';
 import {
   registerUser,
   loginUser,
@@ -39,10 +39,10 @@ router.post('/books', auth, addBook);
 router.put('/books/:id', auth, updateBook);
 router.delete('/books/:id', auth, deleteBook);
 
-router.get('/employees', auth, getEmployees);
-router.get('/employees/:id', auth, getEmployee);
-router.post('/employees', auth, addEmployee);
-router.put('/employees/:id', auth, updateEmployee);
-router.delete('/employees/:id', auth, deleteEmployee);
+router.get('/Customers', auth, getCustomers);
+router.get('/Customers/:id', auth, getCustomer);
+router.post('/Customers', auth, addCustomer);
+router.put('/Customers/:id', auth, updateCustomer);
+router.delete('/Customers/:id', auth, deleteCustomer);
 
 export default router;

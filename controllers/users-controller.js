@@ -14,7 +14,9 @@ const registerUser = async (req, res) => {
 
     const existingUser = await userModel.findOne({ email: email });
     if (existingUser) {
-      return res.status(409).send({ message: 'There is already account associated with this email.' });
+      return res
+        .status(409)
+        .send({ message: 'There is already account associated with this email.' });
     }
 
     const salt = await bcrypt.genSalt();
@@ -50,10 +52,10 @@ const loginUser = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-        return res.status(401).send({ message: 'Invalid password.' });
+      return res.status(401).send({ message: 'Invalid password.' });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: 43200 });
 
     res.send({
       token,
